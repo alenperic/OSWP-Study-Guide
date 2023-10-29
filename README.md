@@ -55,6 +55,16 @@ Steps for testing security on networks with WPA/WPA2/WPA3 encryption, including 
 
 ## Rogue Access Points
 
+## Information Discovery Example:
+Information discovery example:
+```bash
+- ESSID of JesusIsTheWay
+- BSSID of 34:5a:90:e0:5a:30
+- WPS  (AES/CCM)
+- Uses a PSK
+- Runs on channel 1
+```
+
 ## Definitions
 - BSSID: Basic Service Set Identifier is a 48-bit number that follows MAC address conventions.
 - ESSID: Extended Service Set Identifier is a unique identifier to avoid interference on a wireless network.
