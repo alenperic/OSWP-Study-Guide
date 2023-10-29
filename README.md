@@ -54,6 +54,48 @@ reaver -i <INTERFACE> -b <BSSID> -SNLAsvv -d 1 -r 5:3 -c <CHANNEL_NUMBER>
 Steps for testing security on networks with WPA/WPA2/WPA3 encryption, including setting up rogue APs and capturing handshakes:
 
 ## Rogue Access Points
+Instructions for creating a rogue AP.
+
+### Discovery
+```bash
+sudo airodump-ng -w capturename –output-format pcap wlan0mon
+```
+**Wireshark Filters:**
+```bash
+wlan.fc.type_subtype == 0x08 #Broadcast Frames
+wlan.ssid == “apname” #AP name
+```
+Filters can be appended to filter for broadcast frames from a specific AP:
+```bash
+wlan.fc.type_subtype == 0x08 && wlan.ssid == “apname”
+```
+The interesting parts are in Tag: Vendor Specific: & Tag: RSN: Information
+
+### Creating a Rogue AP
+Hostapd-mana template location:
+```bash
+/etc/hostapd-mana/hostapd-mana.conf
+```
+Or you may download the hostapd-mana.config in this repository and modify to your needs.
+
+Start hostapd-mana:
+```bash
+sudo hostapd-mana hostapd-mana.conf
+```
+
+### Cracking .hccapx Files
+**aircrack:**
+```bash
+aircrack-ng name.hccapx -w /wordlist/rockyou.txt
+```
+If you run into errors, you may try:
+```bash
+aircrack-ng name.hccapx -e ESSID -w /wordlist/rockyou.txt
+```
+**hashcat:**
+```
+hashcat -m 2500 capture.hccapx /usr/share/worlists/rockyou.txt
+```
 
 ## Information Discovery Example:
 Information discovery example:
@@ -66,12 +108,19 @@ Information discovery example:
 ```
 
 ## Definitions
+- AP: Access Point
 - BSSID: Basic Service Set Identifier is a 48-bit number that follows MAC address conventions.
 - ESSID: Extended Service Set Identifier is a unique identifier to avoid interference on a wireless network.
 
 ## Troubleshooting
 - Make sure that hostapd-mana is installed on Kali. Default installations currently feature hostapd, hostapd-wpa and hostapd_cli. None of these frameworks feature the *mana_wpaout* section in the *hostapd-mana.config*, and will result in error: *unknown configuration item 'mana_wpaout'*
 - When starting the exam, fist thing after connecting to the .ovpn is to test both **SSH** and **RDP** protocols to ensure connection works as intended.
+- In order to list wireless interfaces, execute command:
+```bash
+sudo airmon-ng
+```
 
 ## Sources
-
+[LIODEUS OSWP Cheatsheet](https://liodeus.github.io/2020/10/29/OSWP-personal-cheatsheet.html)
+[Hashcat File Formats](https://hashcat.net/wiki/doku.php?id=example_hashes)
+[Hashcat Cracking WPA/WPA2](https://hashcat.net/wiki/doku.php?id=cracking_wpawpa2)
