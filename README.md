@@ -4,9 +4,9 @@ Study guide and command sheet for Offensive Security PEN-210 course (Offensive S
 ## WEP (Wired Equivalent Privacy)
 WEP is a severely flawed security algorithm for IEEE 802.11 wireless networks. Below are the steps to exploit WEP vulnerabilities:
 
-```bash
+
 # Step 1: Kill conflicting processes
-sudo airmon-ng check kill
+```bash sudo airmon-ng check kill
 
 # Step 2: Start monitor mode on wlan0
 sudo airmon-ng start wlan0
