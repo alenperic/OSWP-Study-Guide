@@ -14,6 +14,7 @@ sudo airmon-ng check kill
 sudo airmon-ng start wlan0
 ```
 ### Step 3: Scan for WEP networks
+```bash
 sudo airodump-ng wlan0mon --encrypt WEP
 ```
 ### Step 4: Capture IVs
