@@ -129,8 +129,7 @@ aircrack-ng name.hccapx -e ESSID -w /wordlist/rockyou.txt
 hashcat -m 2500 capture.hccapx /usr/share/worlists/rockyou.txt
 ```
 
-## Information Discovery Example:
-Information discovery example:
+## Information Discovery Example
 ```bash
 - ESSID of JesusIsTheWay
 - BSSID of 34:5a:90:e0:5a:30
