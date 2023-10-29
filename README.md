@@ -59,8 +59,8 @@ aircrack-ng ./wep.cap
 ```
 
 ### Additional WEP Attacks:
-[Hirte Attack](https://pentestlab.blog/2015/02/03/hirte-attack/)
-[Caffe Latte Attck](https://www.computerworld.com/article/2539400/cafe-latte-attack-steals-data-from-wi-fi-users.html)
+- [Hirte Attack](https://pentestlab.blog/2015/02/03/hirte-attack/)
+- [Caffe Latte Attck](https://www.computerworld.com/article/2539400/cafe-latte-attack-steals-data-from-wi-fi-users.html)
 
 ## WPS (Wi-Fi Protected Setup)
 WPS was originally known as Wi-Fi Simple Configuration, aiming to unify vendor technologies for secure WPA/WPA2 passphrase sharing. However, it has its set of vulnerabilities. Below are the steps to identify and exploit WPS vulnerabilities:
@@ -157,6 +157,6 @@ systemctl restart NetworkManager.service
 ```  
 
 ## Sources
-[LIODEUS OSWP Cheatsheet](https://liodeus.github.io/2020/10/29/OSWP-personal-cheatsheet.html)
-[Hashcat File Formats](https://hashcat.net/wiki/doku.php?id=example_hashes)
-[Hashcat Cracking WPA/WPA2](https://hashcat.net/wiki/doku.php?id=cracking_wpawpa2)
+- [LIODEUS OSWP Cheatsheet](https://liodeus.github.io/2020/10/29/OSWP-personal-cheatsheet.html)
+- [Hashcat File Formats](https://hashcat.net/wiki/doku.php?id=example_hashes)
+- [Hashcat Cracking WPA/WPA2](https://hashcat.net/wiki/doku.php?id=cracking_wpawpa2)
