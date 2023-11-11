@@ -1,6 +1,12 @@
 # OSWP-Study-Guide
 Study guide and command sheet for Offensive Security PEN-210 course (Offensive Security Wireless Pentester - OSWP)
 
+## Dependencies
+In order to run the following commands, install these frameworks first:
+```bash
+sudo apt install airmon-ng reaver hashcat hostapd dnsmasq nftables apache2 libapache2-mod-php freeradius
+```
+
 ## Open Network with MAC filtering
 In the event that fake authentication persistently fails, it is plausible that MAC address filtering is being employed. Under such a scheme, the Access Point (AP) will only permit connections from a predefined list of MAC addresses. Should this be the scenario, it will be necessary to acquire a legitimate MAC address by monitoring network traffic with the aid of Airodump-ng. Subsequently, impersonation of this MAC address should be carried out once the corresponding client has disconnected from the network. It is imperative to refrain from initiating a fake authentication attack targeting a specific MAC address if the client remains active on the AP.
 
